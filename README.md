@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Reactify-js
+A react project to understand the basic of react.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
