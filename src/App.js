@@ -1,24 +1,17 @@
 import React from 'react'
+import { Navbar, Footer, Pricing } from './components';
 import './style.css';
 
 export const App = () => {
-  // const _cards = [
-  //   {title: 'title 1', sub_title: 'subtitle 1'},
-  //   {title: 'title 2', sub_title: 'subtitle 2'},
-  //   {title: 'title 3', sub_title: 'subtitle 3'},
-  // ]
-  
+  const title = "this is variable_title";
+
   return (
-    <>
-      {/*
-        _cards.map((el, idx) => <Card key={idx} title={el.title} sub_title={el.sub_title}/>)
-      */}
-
-      <br />
-
-      <Card title="title h1" sub_title="this is subtitle"/>
-    </>
-
+    <section className='container py-3' style={{}}>
+      <Navbar />
+      <Pricing />
+      <Footer />
+      <Card title={title} sub_title="this is sub title" />
+    </section>
   )
 }
 
@@ -39,10 +32,10 @@ export const Card = (input) => {
 
   return (
     // jsx - javascript XML.
-    <div className='card'>
+    <section className='card'>
       <h1>{title}</h1>
       <p>{sub_title}</p>
-    </div>
+    </section>
   )
 
 }
