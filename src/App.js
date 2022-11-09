@@ -1,16 +1,18 @@
 import React from 'react'
-import { Navbar, Footer, Pricing } from './components';
+import { Family } from './family';
+// import { Navbar, Footer, Pricing } from './components';
 import './style.css';
 
 export const App = () => {
-  const title = "this is variable_title";
+  // const title = "this is variable_title";
 
   return (
-    <section className='container py-3' style={{}}>
-      <Navbar />
+    <section className='py-3' style={{}}>
+      {/* <Navbar />
       <Pricing />
       <Footer />
-      <Card title={title} sub_title="this is sub title" />
+      <Card title={title} sub_title="this is sub title" /> */}
+      <Family />
     </section>
   )
 }
