@@ -3,8 +3,18 @@
  * communciation and props
 */
 
-import React from 'react'
+/**
+ * ! 1. un-directional flow of data - (architecture style that was being planned by devs of react.)
+ *      -> parent to child flow of information, wherein parent contains the child.
+ *      -> can child not at all pass data to mother ?
+ *      * yes it very well can but it was react was not architected in this manner.
+ *      ? child component can update the state values of the parent component, with the help of function given by parent to child.
+ * ! 2. one-way binding in react - ?
+ *      -> 
+*/
 
+import React from 'react'
+import { useState } from 'react'
 
 export const Family = () => {
     return (
@@ -16,16 +26,27 @@ export const Family = () => {
 }
 
 export const Mother = (props) => {
+    // Roy ki wife.
+    const aajKaKhana = "banana";
+    // first value is the variable and second value is the setter function.
+    const [momMood, setMomMood] = useState("normal");
 
-    const aajKaKhana = "roti";
-    const __speakMom = () => {
+    // let aajKaKhana = "rosogolla";
+    const __speakMom = (moodByChild) => {
         alert("mom");
+        setMomMood(moodByChild);
     }
 
     return (
         <section className='container mt-4'>
             <div className='p-5 bg-danger text-white shadow rounded display-6 text-center'>
                 <p>Mother</p>
+                <p className='lead text-white'> Mom's mood is {momMood}</p>
+                {/* 
+                    aajKaKhana is a variable being passed to the child component. 
+                    __speakMom is a function that is being called by child component.
+                */}
+                {/* we are only passing the reference of the function to the child component. */}
                 <Child food={aajKaKhana} speakMom={__speakMom} />
             </div>
         </section>
@@ -33,13 +54,26 @@ export const Mother = (props) => {
 }
 
 export const Child = (props) => {
-    const food = props.food; // object destructuring.
-    const bolaMom = props.speakMom;
+    let {food, speakMom} = props; // object destructuring.
+    // const food = props.food; 
+    // const bolaMom = props.speakMom;
+
+    let currentMood = "sad";
+    const setMood = (inputFood) => {
+        // food = "banana"; // I'm trying to change the input value but it is not gtting changed in the parent component.
+        if(inputFood === 'banana') {
+            currentMood = "happy";
+        } else if(inputFood === 'rosogolla') {
+            currentMood = "orgasmic"
+        }
+    }
+
+    setMood(food);
 
     return (
         <section className='bg-white text-dark p-5 text-center rounded'>
             <p>Child</p>
-            <p className='text-muted lead'>I'm eating <strong className='text-dark'>{food}</strong></p>
+            <p className='text-muted lead'>My current mood <strong className='text-dark'>{currentMood}</strong></p>
             {/* 
                 // this method will work same as that of one below
                 // but the issue is -> how will you pass arguments?
@@ -48,7 +82,7 @@ export const Child = (props) => {
             */}
 
             {/* method below is recommneded */}
-            <button onClick={() => bolaMom()} className='btn btn-danger'>say mom</button>
+            <button onClick={() => speakMom("super happy")} className='btn btn-danger'>Work hard & become successful</button>
 
         </section>
     )
