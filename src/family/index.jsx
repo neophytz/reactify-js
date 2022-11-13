@@ -4,21 +4,38 @@
 */
 
 /**
- * ! 1. un-directional flow of data - (architecture style that was being planned by devs of react.)
+ * ! 1. Un-directional flow of data - (architecture style that was being planned by devs of react.)
  *      -> parent to child flow of information, wherein parent contains the child.
  *      -> can child not at all pass data to mother ?
+ *      TODO: study and do little research about "prop-drilling"
  *      * yes it very well can but it was react was not architected in this manner.
  *      ? child component can update the state values of the parent component, with the help of function given by parent to child.
- * ! 2. one-way binding in react - ?
+ * ! 2. One-way binding in react - ?
+ *      -> binding means connecting!!
+ *      -> by connection, we are connecting the state variables with the template (JSX).
  *      -> 
 */
 
 import React from 'react'
 import { useState } from 'react'
 
+// variable!! 
+// global | local variable | function !! anything...
+const current_children = ["sachin", "Roy", "vansh", "vishal"];
+
 export const Family = () => {
     return (
         <div>
+            <div className='text-center mt-3'>
+                {
+                    current_children.map((child, idx) => {
+                        return (
+                            <span id={idx} className='text-bold bg-dark text-white rounded mx-2 p-2 px-3'>{child}</span>
+                        )
+                    })
+                }
+            </div>
+
             <Father />
             <Mother />
         </div>
@@ -29,11 +46,13 @@ export const Mother = (props) => {
     // Roy ki wife.
     const aajKaKhana = "banana";
     // first value is the variable and second value is the setter function.
-    const [momMood, setMomMood] = useState("normal");
+    const [momMood, setMomMood] = useState("neutral");
 
     // let aajKaKhana = "rosogolla";
-    const __speakMom = (moodByChild) => {
+    const __setMomMood = (moodByChild) => {
         alert("mom");
+        // this is blocking event, the flow of pragam get to a 
+        // hold at this point and the code below will be executed only after the alter("") is closed.
         setMomMood(moodByChild);
     }
 
@@ -44,19 +63,19 @@ export const Mother = (props) => {
                 <p className='lead text-white'> Mom's mood is {momMood}</p>
                 {/* 
                     aajKaKhana is a variable being passed to the child component. 
-                    __speakMom is a function that is being called by child component.
+                    __setMomMood is a function that is being called by child component.
                 */}
                 {/* we are only passing the reference of the function to the child component. */}
-                <Child food={aajKaKhana} speakMom={__speakMom} />
+                <Child food={aajKaKhana} setMomMood={__setMomMood} />
             </div>
         </section>
     )
 }
 
 export const Child = (props) => {
-    let {food, speakMom} = props; // object destructuring.
+    let {food, setMomMood} = props; // object destructuring.
     // const food = props.food; 
-    // const bolaMom = props.speakMom;
+    // const bolaMom = props.setMomMood;
 
     let currentMood = "sad";
     const setMood = (inputFood) => {
@@ -82,7 +101,7 @@ export const Child = (props) => {
             */}
 
             {/* method below is recommneded */}
-            <button onClick={() => speakMom("super happy")} className='btn btn-danger'>Work hard & become successful</button>
+            <button onClick={() => setMomMood("super happy")} className='btn btn-danger'>Work hard & become successful</button>
 
         </section>
     )
