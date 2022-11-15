@@ -1,7 +1,8 @@
 :root {
-    --sidebar-width: 280px;
+    --sidebar-width: 250px;
     --sidebar-border-radius: 20px;
-    --primary-dark: #1b2632;
+    --primary-dark: #fff;
+    /* --primary-dark: #1b2632; */
     --header-height: 60px;
 }
 
@@ -11,7 +12,8 @@
 }
 
 .sidebar {
-    width: var(--sidebar-width);
+    animation-duration: 1s;
+    /* width: var(--sidebar-width); */
     background-color: var(--primary-dark);
     border-top-right-radius: var(--sidebar-border-radius);
     border-bottom-right-radius: var(--sidebar-border-radius);
@@ -31,4 +33,21 @@
     top: 0;
     left: 0;
     border-bottom-right-radius: var(--sidebar-border-radius);
+}
+
+.sidebar_info {
+    /* width: calc(var(--sidebar-width) - 20px); */
+    padding: 4px 8px;
+    /* border-bottom-right-radius: var(--sidebar-border-radius) !important; */
+    position: fixed;
+    bottom: 20px;
+}
+
+.sidebar_profile_image {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.pointer {
+    cursor: pointer;
 }
