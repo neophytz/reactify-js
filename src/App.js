@@ -2,14 +2,14 @@ import React from 'react'
 // import { Family } from './family';
 // import { Navbar, Footer, Pricing } from './components';
 import './style.css';
-import { Home } from './views/home.view';
+import { Dashboard } from './views/dashboard.view';
 
 export const App = () => {
   // const title = "this is variable_title";
 
   return (
     <section className='py-3' style={{}}>
-      <Home />
+      <Dashboard />
       {/* <Navbar />
       <Pricing />
       <Footer />

@@ -4,10 +4,11 @@ import { NotificationIcon, ProfileIcon, SettingsIcon } from '../../util/componen
 
 export const Header = (props) => {
   const {config} = props;
+  const {openSettingsPanel} = config;
 
   return (
     <div className='header d-flex align-items-center justify-content-between'>
-      <h6>{config.title}</h6>
+      <h6 className='m-0 mx-2'>{config.title}</h6>
       <div className='d-flex p-3 justify-content-around mx-4'>
         {
           (!!config.options.search) ? 
@@ -23,7 +24,7 @@ export const Header = (props) => {
         }
 
         <RenderIf condition={config.options.settings} component={
-          <button className='btn'>
+          <button onClick={() => openSettingsPanel(true)} className='btn'>
             <SettingsIcon />
           </button>
         }/>

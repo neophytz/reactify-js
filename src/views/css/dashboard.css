@@ -9,6 +9,7 @@
 .dashboard {
     padding-left: calc(var(--sidebar-width) + 20px);
     padding-top: calc(var(--header-height) + 10px);
+    padding-right: 20px;
 }
 
 .sidebar {
@@ -35,6 +36,10 @@
     border-bottom-right-radius: var(--sidebar-border-radius);
 }
 
+.header_search_input {
+    min-width: 250px !important;
+}
+
 .sidebar_info {
     /* width: calc(var(--sidebar-width) - 20px); */
     padding: 4px 8px;
@@ -50,4 +55,12 @@
 
 .pointer {
     cursor: pointer;
+}
+
+.content {
+    min-height: calc(100vh - var(--header-height) - 20px);
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 5px;
+    border-radius: 8px 8px;
 }
