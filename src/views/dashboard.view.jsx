@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "./css/dashboard.css";
 import {Content, Header, Sidebar, SettingsDrawer} from './component';
 
-export const Dashboard = () => { // parent
+export const Dashboard = () => {
     const [showSettingsPanel, setshowSettingsPanel] = useState(false)
 
     const header_config = {
